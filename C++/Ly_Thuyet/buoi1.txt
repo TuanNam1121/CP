@@ -1,0 +1,23 @@
+
+
+I. Độ phức tạp tính toán, thời gian, thuật toán Big(O):
+
+1. Hằng số O(1) : Các pháp toán + - * / % , truy cập mảng, cin , cout
+
+2. Độ phức tạp logarit O(logN) : tính tổng ước , check số ng tố
+    Note : O(căn 2 , căn 3 của N) đều suy về O(logn)
+
+3. Độ phức tạp tuyến tính O(n) : duyệt mảng
+
+4. Độ phức tạp O(nlogn) : merge sort , quick sort , ...
+
+O(n^2)
+O(n^3)
+O(2^n) 
+O(n!)
+Càng tăng cao thì càng tốn lâu thời gian để hoàn thành
+
+1s trong máy chấm thì máy xử lý đc 10^8 phép tính
+
+
+II.Vector, pair
