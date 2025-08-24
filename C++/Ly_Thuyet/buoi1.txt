@@ -20,4 +20,59 @@ Càng tăng cao thì càng tốn lâu thời gian để hoàn thành
 1s trong máy chấm thì máy xử lý đc 10^8 phép tính
 
 
-II.Vector, pair
+II. Pair , Vector
+    1. Pair : 1 kiểu dữ liệu có thể lưu được 2 giá trị với 2 kiểu dữ liệu khác nhau.
+    - Cú pháp : pair<kiểu dữ liệu 1, kiểu dữ liệu 2> tên_pair;
+    - Cách gán giá trị : pair<int,int> a;
+        + Gán trực tiếp : a = {100,200}
+        + Gán lần lượt: a.first = 100;
+                        a.second = 200;
+    - Mảng pair : pair<kiểu dữ liệu 1, kiểu dữ liệu 2> tên mảng pair[số phần tử]
+    - Cách gọi : 
+    pair<int,String> a[10];
+    a[i].first = 10;
+    a[i].second = 20;
+    cout << a[i].first << " " << a[i].second;
+    - Pair trong pair :
+    pair<int, pair<int,int>> a;
+    a.first = 10;
+    a.second.first = 20;
+    a.second.second = 30;
+    cout << a.first << " " << a.second.first << " " << a.second.second;
+    - Pair có thể được sử dụng để làm những bài toán lưu hoành độ
+    2. Vector : 1 kiểu dữ liệu mảng động có thể mở rộng tùy ý, tốc độ nhanh như mảng
+    - Cú pháp : vector<kiểu dữ liệu> tên_vector;
+    - Cách khởi tạo : 
+        + vector<kiểu dữ liệu> tên_vector(số phần tử có sẵn trong mảng) : vector sẽ cho ra sẵn n ô và vẫn 
+        có thể thêm phần tử vào được
+        Ví dụ : vector<int> a(10); a[1] = 10;
+        + vector<kiểu dữ liệu> tên_vector(số phần tử có sẵn trong mảng, giá trị mặc định) : vector sẽ cho ra sẵn
+        n ô nhớ và có giá trị bằng với gái trị mặc định
+        Ví dụ : vector<int> a(20,0); cout << a[1] ; // cout ra 0;
+    - Vector có một con trỏ thú vị gọi là iterator = con trỏ nhưng có nhiều thứ hay ho hơn
+    khởi tạo : vector<int>::iterator it;
+    a.begin() : trỏ đến phần tử đầu tiên của vector.
+    a.end() : trỏ đến null không có giá trị phần cuối cùng của 1 vector
+    Vậy nên khi duyệt bằng iterator sẽ là
+        for(vector<int>::iterator it = a.begin(); it != a.end(); it++){
+            cout << *it << " " ;
+        }  
+    Ta có thể thay đoạn dày khởi tạo bằng auto cho dễ dàng hị hị.
+    a.begin() + x : thì sẽ tương đương với trỏ a[x]
+    -Các hàm của vector :
+        vector<int> a;
+        + push_back(value) : đẩy 1 giá trị vào cuối của vector
+        Ví dụ : int c; cin >> c;
+                a.push_back(c);
+        + size() : trả về int số lượng phần tử trong vector
+        Ví dụ : cout << a.size();
+        + pop_back() : xóa phần tử cuối cùng trong vector
+        + erase(iterator cần xóa) : xóa 1 phần tử trong vector bằng iterator
+        + erase(itertor bắt đầu, iterator kết thúc) : xóa các phần tử index từ [x,y).
+        ** Tuy nhiên, không lạm dụng erase() vì độ phức tạp O(n) nên sẽ rất chậm. 
+        + insert(iterator cần thêm, giá trị cần thêm) : thêm một giá trị vào mảng bằng iterator
+        + clear() : xóa tất cả phần tử
+III. sort
+sort(a, a + n) : sort tăng dần
+sort(a, a + n, greater<int>()) : sort giảm dần
+    
