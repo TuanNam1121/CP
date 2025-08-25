@@ -15,18 +15,31 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
+	"main": {
+		"prefix": "hihi ",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"#define ll long long",
+			"",
+			"int main(){",
+			"    $0",
+			"}"
+		],
+		"description": "template"
+	},
+  	"PrimeCheckFunction": {
+    	"prefix": "nto",
+    	"body": [
+			"bool nt(int n) {",
+			"    if (n < 2) return false;",
+			"    for (int i = 2; i <= sqrt(n); i++) {",
+			"        if (n % i == 0) return false;",
+			"    }",
+			"    return true;",
+			"}"
+   		 ],
+    	"description": "Hàm kiểm tra số nguyên tố"
+  }
+}
 
-		"main": {
-			"prefix": "hihi ",
-			"body": [
-				"#include <bits/stdc++.h>",
-				"using namespace std;",
-				"#define ll long long",
-				"",
-				"int main(){",
-				"    $0",
-				"}"
-			],
-			"description": "template"
-		}
-	}
