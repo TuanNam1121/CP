@@ -9,7 +9,7 @@ int main(){
     sort(a.begin(), a.end());
     ll sum = 0;
     for(int i = 1 ; i < n ; i++){
-        sum += (a[i] % mod) * (i % mod); 
+        sum += (a[i] % mod) * i; 
         sum %= mod;
     }
 
