@@ -8,21 +8,21 @@ int main(){
     for(int i = 0 ; i < n ; i++) cin >> a[i];
 
     // sliding window
-    // tạo ra tổng k số đầu tiên
-    ll sum = 0;
-    for(int i = 0; i < k ; i++) sum += a[i];
+    //Tìm subarray có k phần tử sao cho tổng subarray là lớn nhất
 
+    // tạo ra tổng từ 0 đến k
+    ll sum = 0 ;
+    for(int i = 0 ; i < k ; i++) sum += a[i];
     ll res = sum, pos = 0;
-    for(int i = 1 ; i < n - k; i++){
-        sum = sum - a[i - 1] + a[i + k - 1];
-        if(sum > res){
+    // trượt từng phần tử một , -a[i - 1] + a[i + k + 1] , trừ thằng đầu cộng thằng cuối
+    for(int i = 1 ; i <= n - k ; i++){
+        sum = sum - a[i - 1] + a[i + k + 1];
+        // so sánh , truy vấn
+        if(res < sum){
             res = sum;
             pos = i;
         }
     }
-    cout << res << endl;
-    for(int i = pos ; i < pos + k; i++){
-        cout << a[i] << " ";
-    }
 
+    cout << res << endl; // dãy con có k phần tử lớn nhất
 }

@@ -11,4 +11,54 @@ I. Prefix sum (Mảng cộng dồn)
         prefix_sum[i] = prefix_sum[i - 1] + a[i];
     }
 
-II. Sliding windown
+II. Sliding window (cửa sổ trượt)
+
+- trong 1 array , nếu có bài toán nào truy vấn toàn mảng mà bắt truy vấn lần lượt k số liên tiếp
+ví dụ như tổng dãy k lớn nhất , tổng dãy k nhỏ nhất trong mảng
+thay vì 2 vòng for hoặc for(0 -> n) so sánh sum < a[1] + a[2] + a[3] + a[4]
+
+- ta sẽ sử dụng cửa số trượt (sliding window) :
++ nắm được k thằng đầu tiên
+    for(int i = 0 ; i < k ; i++) sum += a[i];
+có tổng từ 0 -> k
++ từ đó k số tiếp theo từ 1 đến k + 1 sẽ có cách tính là sum = sum - a[i - 1] + a[i + k + 1];
+rồi so sánh , hoặc truy vấn tiếp
+
+- Cách cài đặt :
+    //Tìm subarray có k phần tử sao cho tổng subarray là lớn nhất
+
+    // tạo ra tổng từ 0 đến k
+    ll sum = 0 ;
+    for(int i = 0 ; i < k ; i++) sum += a[i];
+    ll res = sum, pos = 0;
+    // trượt từng phần tử một , -a[i - 1] + a[i + k + 1] , trừ thằng đầu cộng thằng cuối
+    for(int i = 1 ; i <= n - k ; i++){
+        sum = sum - a[i - 1] + a[i + k + 1];
+        // so sánh , truy vấn
+        if(res < sum){
+            res = sum;
+            pos = i;
+        }
+    }
+
+    cout << res << endl; // dãy con có k phần tử lớn nhất
+
+III. Đệ quy : Recursion, Recursive
+
+- có 2 bước là base case và inductive case 
+base case (trường cơ sở) : là bước để bài toán dừng
+inductive case (trường quy nạp) : là các bước để bài toán chia nhỏ
+
+- Tính fibo 
+base case :                 i == 0 || i == 1 return i;
+inductive case :            i > 2 == a[i - 1] + a[i - 2];
+
+- Tính tổ hợp chập k của n
+base case  :                k == 0 || k == 1 return 1;
+inductive case :            tohop(n - 1, k - 1) + tohop(n - 1, k);
+
+- Tính lũy thừa nhị phân
+base case :               b == 0 return 1;
+inductive case :          int temp = pow(a, b/2); if(b % 2 == 1) return temp * temp * a;
+                                                  else return temp * temp;
+                    
