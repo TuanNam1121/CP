@@ -1,0 +1,14 @@
+
+
+I. Prefix sum (Mảng cộng dồn)
+
+- dp[i] += a[i] từ 0 đến i
+- muốn tính tổng mảng từ l đến r dùng mảng cộng dồn sẽ là sum from l to r = prefix_sum[l] - prefix_sum[r - 1];
+
+- Cài đặt prefix sum :
+    prefix_sum[0] = a[0];
+    for(int i = 1 ; i < n ; i++){
+        prefix_sum[i] = prefix_sum[i - 1] + a[i];
+    }
+
+II. Sliding windown
