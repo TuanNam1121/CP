@@ -9,6 +9,7 @@ int main(){
 
     sort(a.begin(), a.end());
     int presum , possum; presum = possum = 0;
+    k = min(k, n - k);
     for(int i = 0 ; i < n ; i++){
         if(i < k) presum += a[i];
         else possum += a[i];

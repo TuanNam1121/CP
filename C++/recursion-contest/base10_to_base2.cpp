@@ -9,7 +9,13 @@ string bin(int a){
     else return temp + "1";
 }
 
+void convert(ll n){
+    if(n == 0) return;
+    convert(n / 2);
+    cout << n % 2;
+}
 int main(){
     ll n; cin >> n;
-    cout << bin(n);
+    cout << bin(n) << endl;
+    convert(n);
 }
