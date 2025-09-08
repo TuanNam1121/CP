@@ -2,11 +2,8 @@
 using namespace std;
 #define ll long long
 
-bool check_rev(int a[], int n, int i){
-    if(n % 2 == 0 && n - i == 2){
-        return a[i] == a[n];
-    }
-    else if(i == n) return true;
+bool check_rev(int a[], int l, int r){
+    if(l >= r) return true;
     return a[n] == a[i] && check_rev(a, --n, ++i);
 }
 

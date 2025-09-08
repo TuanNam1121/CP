@@ -1,0 +1,24 @@
+I. Set
+- được xây dựng trên bst
+- rất mạnh
+- sử dụng 3 thằng chính là :
+set
+multiset
+unordered_set
+ordered_set
+- set chỉ được lưu các phần tử không trùng nhau
+- tự sắp xếp tăng dần luôn
+- duyệt bằng for each hoặc iterator
+- insert : logn -> them
+- find : logn  -> tim
+- count : logn -> Check xem xuất hiện bao nhiêu lần 
+- erase : logn -> xoa
+Nếu tìm thấy thì trả về iterator của phần tử tìm kiếm
+không thấy thì trả về se.end()
+
+- multiset có thể lưu được các phần tử trùng nhau
+- có thể tự cân bằng
+- nếu xóa phần tử trong multiset : nếu xóa bằng erase + giá trị : xóa hết
+                                       xóa bằng iterator : xóa 1 phần tử
+
+- unordered_set : 
