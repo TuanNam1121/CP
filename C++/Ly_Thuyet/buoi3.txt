@@ -21,4 +21,19 @@ không thấy thì trả về se.end()
 - nếu xóa phần tử trong multiset : nếu xóa bằng erase + giá trị : xóa hết
                                        xóa bằng iterator : xóa 1 phần tử
 
-- unordered_set : 
+- unordered_set : không lưu phần tử trùng nhau và mảng sẽ ko sắp xếp
+set xây dựng bằng bst
+unordered_set xây dựng bằng hash table
+
+- bài toán : 
++ lọc ra các phần tử khác nhau trong mảng
+
+Dùng set khi:
+Cần duyệt các phần tử theo thứ tự tăng dần.
+Cần lower_bound / upper_bound để tìm phần tử gần nhất.
+Muốn hiệu năng ổn định trong mọi tình huống O(log n)
+
+Dùng unordered_set khi:
+Chỉ cần kiểm tra sự tồn tại, chèn, xóa.
+Không cần thứ tự.
+Muốn tốc độ trung bình tốt hơn.
