@@ -37,3 +37,25 @@ Dùng unordered_set khi:
 Chỉ cần kiểm tra sự tồn tại, chèn, xóa.
 Không cần thứ tự.
 Muốn tốc độ trung bình tốt hơn.
+
+II.Map
+map cực kì mạnh
+
+<key, value> -> key là duy nhất không thể giống nhau
+khai báo : map<dt1,dt2>
+insert({key, value}) : logn
+map[key] = value  => mp.insert({key, value})
+size()
+find(x) : logn -> trỏ về iterator của phần tử , không thì trỏ về end()
+count(x) : logn -> nếu chỉ muốn biết nó có tồn tại hay không thì dùng count
+erase(key) : logn -> xóa thông qua key và xóa thông qua value
+tự khắc tăng tần xuất lên 1 nếu chưa có key trong map
+duyệt thông qua for each : pair, iterator
+it->first , it->second
+thứ tự key tăng dần
+
+multimap có thể lưu cùng key
+nhưng ko gán được mp[key] vì có nhiều cặp có cùng value
+
+unordered_map : lưu thứ tự không theo trật tự , không lưu được key trùng nhau.
+trường hợp tốt nhất có thể đạt đến O(1)
