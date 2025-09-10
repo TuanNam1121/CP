@@ -8,19 +8,19 @@ using namespace std;
 // sap xep
 // tim kiem
 
-// sort : nlogn (<= 10^6)
-// stable_sort
-// sort vector : sort(a.begin(), a.end())
-// sort(a.begin() + x, a.begin() + y + 1)
-// comparator : compare
-// custom comparator
-// a đứng trước , b đứng sau 
-// đúng thứ tự rồi thì trả về true
-// chưa đúng thì trả vè false
+sort : nlogn (<= 10^6)
+stable_sort
+sort vector : sort(a.begin(), a.end())
+sort(a.begin() + x, a.begin() + y + 1)
+comparator : compare
+custom comparator
+a đứng trước , b đứng sau 
+đúng thứ tự rồi thì trả về true
+chưa đúng thì trả vè false
 
 
-//intro sort : quicksort + heapsort : non-stable
-// stable sort : merge sort
+intro sort : quicksort + heapsort : non-stable => sắp xếp sẽ không trả về kết quả như thứ tự đã nhập
+stable sort : merge sort => trả về kết quả như đúng thứ tự đã nhập
 bool cmp(pair<int, int> a, pair<int, int> b){
     if(a.second != b.second) return a.second > b.second;
     else return a.first < b.first;
