@@ -15,16 +15,8 @@ int main(){
         cin >> b[i];
         sb.insert(b[i]);
     }
-    set<int> res;
-    for(int i = 0 ; i < n ; i++){
-        if(!sb.count(a[i])) res.insert(a[i]);
+    
+    for(int i = 0 ; i < n; i++){
+        if(!sb.count(a[i])) cout << a[i] << " ";
     }
-    for(int i = 0 ; i < m ; i++){
-        if(!sa.count(b[i])) res.insert(b[i]);
-    }
-
-    for(int i : res){
-        cout << i << " ";
-    }
-
 }
