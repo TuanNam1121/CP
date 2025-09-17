@@ -11,7 +11,7 @@ int main(){
     sort(a.begin(), a.end(), greater<int>());
     int lit = a[0];
     for(int i = 1; i < n; i++){
-        lit += a[i] - i;
+        lit += max(0, a[i] - i);
     }
     cout << lit;
 }
