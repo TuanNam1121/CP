@@ -1,0 +1,14 @@
+I. Mảng 2 chiều
+- 1 ma trận có n hàng và m cột
+- nếu n*m > 10^6 thì sẽ khai báo mảng a ra bên ngoài hàm main
+
+* Các khái niệm về ma  trận
+
+- row = collumn : ma trận vuông cấp n
++ Đường chéo chính : là đường cháo trên các đoạn có chỉ số hàng = chỉ số cột : i = j 
+a[i][i]
++ Đường chéo phụ : là đường chéo còn lại của ma trận : i = n - 1 - j 
+a[i][n - i - 1]
+
++ Tất cả các phần tử nằm dưới đường chéo chính , gọi là tam giác dưới : j <= i
++ tam giác trên : j >= i
