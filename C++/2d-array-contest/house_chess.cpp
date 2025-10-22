@@ -15,14 +15,8 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int dx[4] = {-1, 0, 0, 1};
-int dy[4] = {0, -1, 1, 0};
-
 int main() {
     fast_io();
-    int a = 5, b = 5;
-    for(int i = 0 ; i < 4 ; i++){
-        cout << a + dx[i] << " " << b + dy[i] << endl;
-    }
+    
     return 0;
 }

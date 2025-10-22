@@ -15,20 +15,29 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int a[1000][1000];
+int a[200][200];
+int n;
+
+bool prime(int n){
+    if(n < 2) return false;
+    for(int i = 2 ; i <= sqrt(n); ++i){
+        if(n % i == 0) return false;
+    }
+    return true;
+}
+
 int main() {
     fast_io();
-    int n, m; cin >> n >> m;
-    rep2(i, j, 0, n, 0, m) cin >> a[i][j];
-
-    int maxN = INT32_MIN, minN = INT32_MAX;
+    cin >> n;
+    set<int> se;
+    rep2(i, j, 0, n, 0, n) cin >> a[i][j];
     rep(i, 0, n){
-        for(int j = 0 ; j < m ; ++j){
-            maxN = max(maxN, a[i][j]);
-            minN = min(minN, a[i][j]);
+        for(int j = 0 ; j < n ; j++){
+            if(i == j || j == n - i - 1){
+                if(prime(a[i][j])) se.insert(a[i][j]);
+            }
         }
     }
-
-    cout << maxN << " " << minN;
+    cout << se.size();
     return 0;
 }

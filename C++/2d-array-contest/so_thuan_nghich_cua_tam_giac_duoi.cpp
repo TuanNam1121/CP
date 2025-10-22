@@ -6,6 +6,8 @@ using namespace std;
 #define pb push_back
 #define fi first
 #define se second
+#define rep(i,a,b) for(int i=(a); i<(b); ++i)
+#define rep2(i,j,a,b,c,d) for (int i = (a); i < (b); ++i) for (int j = (c); j < (d); ++j)
 
 void fast_io() {
     ios::sync_with_stdio(false);
@@ -13,34 +15,24 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-bool sothuannghich(int n){
-    if(n < 10) return 1;
-    int rev = 0, temp = n;
-    while(temp > 0){
-        rev += (temp % 10);
-        temp /= 10;
-        if(temp > 0) rev *= 10;
+bool palindrome(int n){
+    int rev = 0, ori = n;
+    while(n > 0){
+        rev *= 10;
+        rev += n % 10;
+        n /= 10;
     }
-    return rev == n;
+    return rev == ori;
 }
 
+int a[1000][1000];
 int main() {
     fast_io();
     int n; cin >> n;
-    int a[200][200];
-
-    for(int i = 0 ; i < n ; i++){
-        for(int j = 0 ; j < n ; j++){
-            cin >> a[i][j];
-        }
-    }
+    rep2(i, j, 0, n, 0, n) cin >> a[i][j];
     int count = 0;
-    for(int i = 0 ; i < n ; i++){
-        for(int j = 0 ; j < n ; j++){
-            if(j <= i && sothuannghich(a[i][j])){
-                count++;
-            }
-        }
+    rep2(i, j, 0, n, 0, n){
+        if(j <= i && palindrome(a[i][j])) ++count;
     }
     cout << count;
     return 0;

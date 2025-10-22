@@ -15,14 +15,29 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int dx[4] = {-1, 0, 0, 1};
-int dy[4] = {0, -1, 1, 0};
+int a[200][200];
+int n;
+
+bool prime(int n){
+    if(n < 2) return false;
+    for(int i = 2 ; i <= sqrt(n); ++i){
+        if(n % i == 0) return false;
+    }
+    return true;
+}
 
 int main() {
     fast_io();
-    int a = 5, b = 5;
-    for(int i = 0 ; i < 4 ; i++){
-        cout << a + dx[i] << " " << b + dy[i] << endl;
+    cin >> n;
+    rep2(i, j, 0, n, 0, n) cin >> a[i][j];
+    int cnt = 0 ;
+    rep(i, 0, n){
+        for(int j = 0 ; j < n ; j++){
+            if(i == j || j == n - i - 1){
+                if(prime(a[i][j])) ++cnt;
+            }
+        }
     }
+    cout << cnt;
     return 0;
 }

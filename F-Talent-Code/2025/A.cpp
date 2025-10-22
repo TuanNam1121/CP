@@ -34,8 +34,8 @@ int main() {
     // sort(a.begin(), a.end(), cmp);
 
     ll res = LONG_LONG_MIN;
-    for(int i = 0 ; i < n ; i++){
-        for(int j = i ; j < n - 1 ; j++){
+    for(int i = 0 ; i < n - 1; i++){
+        for(int j = i + 1; j < n; j++){
             res = max(res, dis(a[i], a[j]));
         }
     }

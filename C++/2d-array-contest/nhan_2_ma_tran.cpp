@@ -15,20 +15,29 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int a[1000][1000];
 int main() {
     fast_io();
-    int n, m; cin >> n >> m;
+    int n, m, p; cin >> n >> m >> p;
+    int a[n][m], b[m][p];
     rep2(i, j, 0, n, 0, m) cin >> a[i][j];
+    rep2(i, j, 0, m, 0, p) cin >> b[i][j];
 
-    int maxN = INT32_MIN, minN = INT32_MAX;
-    rep(i, 0, n){
-        for(int j = 0 ; j < m ; ++j){
-            maxN = max(maxN, a[i][j]);
-            minN = min(minN, a[i][j]);
+    int res[n][p];
+    for(int i = 0 ; i < n ; ++i){
+        for(int j = 0 ; j < p ; ++j){
+            res[i][j] = 0;
+            for(int k = 0 ; k < m ; ++k){
+                res[i][j] += a[i][k] * b[k][j];
+            }
         }
     }
 
-    cout << maxN << " " << minN;
+    rep(i, 0, n){
+        for(int j = 0 ; j < p ; ++j){
+            cout << res[i][j] << " ";
+        }
+        cout << endl;
+    }
+
     return 0;
 }

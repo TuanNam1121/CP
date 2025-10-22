@@ -14,15 +14,22 @@ void fast_io() {
     cin.tie(nullptr);
     cout.tie(nullptr);
 }
-
-int dx[4] = {-1, 0, 0, 1};
-int dy[4] = {0, -1, 1, 0};
-
+int a[200][200];
+int n;
 int main() {
     fast_io();
-    int a = 5, b = 5;
-    for(int i = 0 ; i < 4 ; i++){
-        cout << a + dx[i] << " " << b + dy[i] << endl;
+    cin >> n;
+    rep2(i, j, 0, n, 0, n) cin >> a[i][j];
+
+    for(int i = 0 ; i < n ; i++){
+        vector<int> r(n);
+        for(int j = 0; j < n ; j++){
+            r[j] = a[i][j];
+        }
+        sort(r.begin(), r.end());
+        for(int i : r) cout << i << " ";
+        cout << endl;
     }
+
     return 0;
 }

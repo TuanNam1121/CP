@@ -15,14 +15,21 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int dx[4] = {-1, 0, 0, 1};
-int dy[4] = {0, -1, 1, 0};
-
+int a[500][500];
 int main() {
     fast_io();
-    int a = 5, b = 5;
-    for(int i = 0 ; i < 4 ; i++){
-        cout << a + dx[i] << " " << b + dy[i] << endl;
+    int n; cin >> n;
+    rep2(i, j, 0, n, 0, n) cin >> a[i][j];
+
+    for(int i = 0 ; i < n ; i++){
+        swap(a[i][i], a[i][n-i-1]);
+    }
+
+    rep(i, 0, n){
+        for(int j = 0; j < n ; j++){
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
     }
     return 0;
 }
