@@ -15,30 +15,28 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int a[200][200];
+int a[100][100];
 int n;
-
-bool prime(int n){
-    if(n < 2) return false;
-    for(int i = 2 ; i <= sqrt(n); ++i){
-        if(n % i == 0) return false;
-    }
-    return true;
-}
 
 int main() {
     fast_io();
     cin >> n;
     rep2(i, j, 0, n, 0, n) cin >> a[i][j];
-    int cnt = 0 ;
+
     rep(i, 0, n){
-        if(prime(a[i][i])) ++cnt;
-        if(prime(a[i][n - i - 1])) ++cnt;
+        if(i == 0 || i == n - 1){
+            rep(j, 0, n){
+                cout << a[i][j] << " ";
+            }
+            cout << endl;
+        }
+        else{
+            rep(j, 0, n){
+                if(j == 0 || j == n - 1) cout << a[i][j] << " ";
+                else cout << "  ";
+            }
+            cout << endl;
+        }
     }
-    
-    if(n % 2 == 1){
-        if(prime(a[n / 2][n / 2])) --cnt;
-    }
-    cout << cnt;
     return 0;
 }

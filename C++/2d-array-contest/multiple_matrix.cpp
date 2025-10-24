@@ -15,35 +15,30 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int a[100][100];
-int n, m; 
-int dx[4] = {-1, 0, 0, 1};
-int dy[4] = {0, -1, 1, 0};
-
-void loang(int i, int j){
-    a[i][j] = 0;
-    for(int k = 0 ; k < 4 ; ++k){
-        int i1 = i + dx[k];
-        int j1 = j + dy[k];
-        if(i1 >= 0 && i1 < n && j1 >= 0 && j1 < m && a[i1][j1] == 1){
-            loang(i1, j1);
-        }
-    }
-}
+int a[50][50], b[50][50];
 
 int main() {
     fast_io();
-    cin >> n >> m;
+    int n, m, p; cin >> n >> m >> p;
     rep2(i, j, 0, n, 0, m) cin >> a[i][j];
-    int cnt = 0;
-    rep(i, 0, n){
-        for(int j = 0 ; j < m ; ++j){
-            if(a[i][j] == 1){
-                ++cnt;
-                loang(i, j);
-            }
+    rep2(i, j, 0, m, 0, p) cin >> b[i][j];
+
+    int res[n][p];
+
+    for(int i = 0 ; i < n ;++i){
+        for(int j = 0 ; j < p ; ++j){
+            res[i][j] = 0;
+            for(int k = 0 ; k < m ; ++k) res[i][j] += a[i][k] * b[k][j];
         }
     }
-    cout << cnt;
+
+    rep(i, 0, n){
+        for(int j = 0 ; j < p ; ++j){
+            cout << res[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+
     return 0;
 }

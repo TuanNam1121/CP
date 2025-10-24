@@ -15,35 +15,35 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int a[100][100];
-int n, m; 
+int a[500][500];
+int n, m;
 int dx[4] = {-1, 0, 0, 1};
 int dy[4] = {0, -1, 1, 0};
 
-void loang(int i, int j){
+bool valid(int i, int j){
+    return i >= 0 && i < n && j >= 0 && j < m && a[i][j] == 1; 
+}
+
+int loang(int i, int j){
     a[i][j] = 0;
+    int res = 1;
     for(int k = 0 ; k < 4 ; ++k){
-        int i1 = i + dx[k];
-        int j1 = j + dy[k];
-        if(i1 >= 0 && i1 < n && j1 >= 0 && j1 < m && a[i1][j1] == 1){
-            loang(i1, j1);
-        }
+        int i1 = i + dx[k], j1 = j + dy[k];
+        if(valid(i1, j1)) res += loang(i1, j1); 
     }
+    return res;
 }
 
 int main() {
     fast_io();
     cin >> n >> m;
     rep2(i, j, 0, n, 0, m) cin >> a[i][j];
-    int cnt = 0;
+    int res = 0;
     rep(i, 0, n){
-        for(int j = 0 ; j < m ; ++j){
-            if(a[i][j] == 1){
-                ++cnt;
-                loang(i, j);
-            }
+        rep(j, 0, m){
+            if(a[i][j] == 1) res = max(res, loang(i, j));
         }
     }
-    cout << cnt;
+    cout << res;
     return 0;
 }
