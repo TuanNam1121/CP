@@ -25,7 +25,7 @@ bool valid(int i, int j){
     return i >= 0 && i < n && j >= 0 && j < m; 
 }
 
-int sum(int i, int j){
+int solve1(int i, int j){
     if(i == n - 1 && j == m - 1) return a[i][j];
     int i1 = i + dx[0], j1 = j + dy[0];
     int i2 = i + dx[1], j2 = j + dy[1];
@@ -36,6 +36,7 @@ int sum(int i, int j){
     else if(valid(i2, j2)) return sum(i2, j2) + a[i][j];
     else return -1;
 }
+
 
 
 int main() {

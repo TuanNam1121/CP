@@ -43,6 +43,7 @@ int main() {
             }
         }
     }
-    for(auto it : s) cout << it << " ";
+    if(s.size() > 0) for(auto it : s) cout << it << " ";
+    else cout << "NOT FOUND";
     return 0;
 }

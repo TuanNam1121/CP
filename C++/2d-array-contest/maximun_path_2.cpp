@@ -15,38 +15,38 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
+int dx[3] = {1, 1, 1};
+int dy[3] = {-1, 0, 1};
+ 
 int a[100][100];
 int n;
 
-int dx[3] = {1, 1, 1};
-int dy[3] = {-1, 0, 1};
-
 bool valid(int i, int j){
-    return i >= 0 && i < n && j >= 0 && j < n; 
+    return i >= 0 && i < n && j >= 0 && j < n;
 }
 
-int path(int i, int j){
-    int res = a[i][j];
+int loang(int i, int j){
+    if(i == n - 1) return a[i][j];
+    int sum = 0;
+    cout << "path " << i << ' ' << j << endl;
     for(int k = 0 ; k < 3 ; ++k){
         int i1 = i + dx[k], j1 = j + dy[k];
-        if(valid(i1, j1)) res = max(res, res + path(i1,j1));
+        int weight = loang(i1, j1) + a[i][j];
+        cout << sum << " " << weight << endl;
+        if(valid(i1, j1)) return max(sum, weight);
     }
-    return res;
+    return sum;
 }
+
 
 int main() {
     fast_io();
     cin >> n;
-    int sum = 0;
-    rep2(i, j, 0, n, 0, n){
-        cin >> a[i][j];
+    rep2(i, j, 0, n, 0, n) cin >> a[i][j];
+    int res = INT32_MIN;
+    for(int i = 0; i < n; ++i){
+        res = max(res, loang(0, i));
     }
-    cout << sum << endl;
-    int res = 0;
-    rep(i, 0, n){
-        res = max(res, path(0, i));
-    }
-    cout << res; 
+    cout << res;
     return 0;
-
-}   
+}

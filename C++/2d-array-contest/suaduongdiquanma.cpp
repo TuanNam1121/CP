@@ -15,38 +15,28 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int a[100][100];
+int dx[8] = {-2, -2, -1, -1, 1, 1, 2, 2};
+int dy[8] = {-1, 1, -2, 2, -2, 2, -1, 1};
+
+int a[200][200];
 int n;
+int s, t, u, v;
 
-int dx[3] = {1, 1, 1};
-int dy[3] = {-1, 0, 1};
-
-bool valid(int i, int j){
-    return i >= 0 && i < n && j >= 0 && j < n; 
-}
-
-int path(int i, int j){
-    int res = a[i][j];
-    for(int k = 0 ; k < 3 ; ++k){
+void loang(int i, int j){
+    a[i][j] = 0;
+    for(int k = 0 ; k < 8 ; ++k){
         int i1 = i + dx[k], j1 = j + dy[k];
-        if(valid(i1, j1)) res = max(res, res + path(i1,j1));
+        if(i1 >= 0 && i1 < n && j1 >= 0 && j1 < n && a[i1][j1] == 1) loang(i1, j1);
     }
-    return res;
 }
 
 int main() {
     fast_io();
     cin >> n;
-    int sum = 0;
-    rep2(i, j, 0, n, 0, n){
-        cin >> a[i][j];
-    }
-    cout << sum << endl;
-    int res = 0;
-    rep(i, 0, n){
-        res = max(res, path(0, i));
-    }
-    cout << res; 
+    cin >> s >> t >> u >> v;
+    rep2(i, j, 0, n, 0, n) cin >> a[i][j];
+    loang(s - 1 , t - 1);
+    if(a[u - 1][v - 1] == 0) cout << "YES";
+    else cout << "NO";   
     return 0;
-
-}   
+}
