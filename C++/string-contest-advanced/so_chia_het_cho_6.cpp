@@ -15,18 +15,24 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
+bool check(string a){
+    if((a[a.size()- 1] - '0') % 2 != 0) return false ;
 
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
+    int sum = 0;
+    for(char i : a){
+        sum += i - '0';
     }
+    return sum % 3 == 0; 
 }
 
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
-    }
+void solve(string a){
+    if(check(a)) cout << "YES";
+    else cout << "NO";
+}
+
+int main() {
+    fast_io();
+    string a; cin >> a;
+    solve(a);
+    return 0;
 }

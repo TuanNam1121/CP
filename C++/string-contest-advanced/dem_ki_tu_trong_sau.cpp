@@ -15,18 +15,17 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
+int main() {
+    fast_io();
+    string s; getline(cin,s);
+    int len = s.size();
+    int d, c, sp; d = c = sp = 0;
+    for(int i = 0; i < len; ++i){
+        if(isdigit(s[i])) d++;
+        else if(isalpha(s[i])) c++;
+        else sp++;
+    } 
 
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
-    }
-}
-
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
-    }
+    cout << c << " " << d << " " << sp << endl;
+    return 0;
 }

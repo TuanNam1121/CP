@@ -15,18 +15,14 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
-
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
+int main() {
+    fast_io();
+    string a, b;
+    getline(cin, a);
+    getline(cin, b);
+    if(a.find(b) != string::npos){
+        cout << "Tim thay";
     }
-}
-
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
-    }
+    else cout << "Khong tim thay"; 
+    return 0;
 }

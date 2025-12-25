@@ -15,18 +15,19 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
-
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
+int main() {
+    fast_io(); 
+    string s; cin >> s;
+    string ans = "";
+    for(char i : s){
+        if(i == '4') ans += "322";
+        else if(i == '6') ans += "53";
+        else if(i == '8') ans += "7222";
+        else if(i == '9') ans += "7332";
+        else if(i == '1') continue;
+        else ans += i;
     }
-}
-
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
-    }
+    sort(ans.rbegin(), ans.rend());
+    cout << ans;
+    return 0;
 }

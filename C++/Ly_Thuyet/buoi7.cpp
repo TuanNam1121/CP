@@ -15,18 +15,8 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
-
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
-    }
-}
-
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
-    }
+int main() {
+    fast_io();
+    
+    return 0;
 }

@@ -15,18 +15,24 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
-
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
+int main() {
+    fast_io();
+    string s1, s2; cin >> s1 >> s2;
+    int c[256] = {0};
+    for(char i : s1){
+        c[i]++;
     }
-}
 
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
+    for(char i : s2){
+        c[i]++;
     }
+
+    for(int i = 0 ; i < 256; ++i){
+        if(c[i] > 1) cout << char(i);
+    }
+    cout << endl;
+    for(int i = 0 ; i < 256; ++i){
+        if(c[i] != 0) cout << char(i);
+    }
+    return 0;
 }

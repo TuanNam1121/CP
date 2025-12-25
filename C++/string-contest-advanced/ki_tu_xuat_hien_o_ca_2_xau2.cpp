@@ -15,18 +15,26 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
-
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
+int main() {
+    fast_io();
+    string s1, s2; cin >> s1 >> s2;
+    set<char> set1, set2;
+    for(char i : s1){
+        set1.insert(i);
     }
-}
 
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
+    for(char i : s2){
+        set2.insert(i);
     }
+    
+    for(char i : set1){
+        if(set2.find(i) == set2.end()) cout << i;
+    }
+    cout << endl;
+    for(char i : set2){
+        if(set1.find(i) == set1.end()) cout << i;
+    }
+
+    return 0;
 }
+            

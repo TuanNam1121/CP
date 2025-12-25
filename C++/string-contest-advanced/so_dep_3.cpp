@@ -15,18 +15,21 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
-
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
+bool check(string a){
+    bool higher, lower;
+    higher = lower = true;
+    for(int i = 1; i < a.size(); ++i){
+        if(a[i - 1] > a[i]) lower = false;
+        else if(a[i - 1] < a[i]) higher = false;
     }
+    return higher || lower;
 }
 
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
-    }
+int main() {
+    fast_io();
+    string a; cin >> a;
+    if(check(a)) cout << "YES";
+    else cout << "NO";
+    return 0;
 }
+

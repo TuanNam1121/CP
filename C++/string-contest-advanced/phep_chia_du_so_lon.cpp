@@ -15,18 +15,20 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-ll factorial[15];
-
-void init(){
-    for(int i = 0; i < 15; ++i){
-        if(i < 2) factorial[i] = i;
-        else factorial[i] = factorial[i - 1] * i;
+ll bignumMod(string a, ll n){
+    ll res = 0;
+    for(int i = 0 ; i < a.size(); ++i){
+        res *= 10;
+        res += a[i] -'0';
+        res %= n;
     }
+    return res;
 }
 
-int main(){
-    init();
-    for(int i : factorial){
-        cout << i << endl;
-    }
+int main() {
+    fast_io();
+    string a; cin >> a;
+    ll n; cin >> n;
+    cout << bignumMod(a, n);
+    return 0;
 }
