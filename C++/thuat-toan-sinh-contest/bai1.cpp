@@ -17,12 +17,17 @@ void fast_io() {
 
 int main() {
     fast_io();
-    string s;
-    while(cin >> s){
-        for(int i = 0; i < s.size(); ++i){
-            if(isalnum(s[i])) cout << s[i];
+    string s; cin >> s;
+    bool changed = 0;
+    for(int i = s.size() - 1; i >= 0; --i){
+        if(s[i] == '0'){
+            s[i] = '1';
+            changed = 1;
+            break;
         }
-        cout << endl;
+        else s[i] = '0';
     }
+    if(changed) cout << s;
+    else for(int i = 0; i < s.size(); ++i) cout << '0';
     return 0;
 }

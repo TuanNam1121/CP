@@ -15,8 +15,33 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
+struct phanso{
+    ll a, b;
+};
+
+void nhap(phanso &p){
+    cin >> p.a >> p.b;
+}
+
+ll gcd(ll a, ll b){
+    if(b == 0) return a;
+    return gcd(b, a % b);
+}
+
+void rutgon(phanso &p){
+    ll g = gcd(p.a, p.b);
+    p.a /= g;
+    p.b /= g;
+}
+void in(phanso p){
+    cout << p.a << "/" << p.b;
+}
+
 int main() {
     fast_io();
-    
+    phanso p;
+    nhap(p);
+    rutgon(p);
+    in(p);
     return 0;
 }

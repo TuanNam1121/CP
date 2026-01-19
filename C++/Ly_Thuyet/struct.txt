@@ -1,0 +1,34 @@
+khai báo 1 struct :
+
+struct TenStruct{
+    các thuộc tính : 
+    ví dụ :: ll a, ll b;
+
+    các hàm :
+    hàm khởi tạo : 
+
+    TenStruct(tham số){
+        this->a = a;
+        this->b = b;
+    }
+
+    Các phép tính : + - * / 
+
+    TenStruct operator + phép tính (TenStruct other){
+        // logic 
+    }
+
+    friend bool operator == (sophuc a, sophuc b){
+        return a.thuc == b.thuc && a.ao == b.ao;
+    }
+
+    friend istream& operator >> (istream& in, sophuc& x){
+        in >> x.thuc >> x.ao;
+        return in;
+    }
+
+    friend ostream& operator << (ostream& out, sophuc x){
+        out << x.thuc << " + " << x.ao << "i";
+        return out;
+    }
+}

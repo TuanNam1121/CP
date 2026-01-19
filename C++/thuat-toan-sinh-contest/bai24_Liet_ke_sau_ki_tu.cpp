@@ -15,14 +15,35 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
+int n, k, a[100], ok;
+
+void ktao(){
+    ok = 1;
+    for(int i = 1; i <= k; ++i) a[i] = 1;
+}
+
+void sinh(){
+    int i = k;
+    while(i >= 1 && a[i] == n) --i;
+    if(i == 0) ok = 0;
+    else{
+        a[i]++;
+        for(int j = i + 1; j <= k; ++j) a[j] = 1;
+    }
+}
+
 int main() {
     fast_io();
-    string s;
-    while(cin >> s){
-        for(int i = 0; i < s.size(); ++i){
-            if(isalnum(s[i])) cout << s[i];
+    char i;
+    cin >> i >> k;
+    n = i - 'A' + 1;
+    ktao();
+    while(ok){
+        for(int i = 1; i <= k; ++i){
+            cout << (char)(a[i] - 1 + 'A');
         }
         cout << endl;
-    }
+        sinh();
+    }   
     return 0;
 }
