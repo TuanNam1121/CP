@@ -15,27 +15,30 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int lengthOfLongestSubstring(string s) {
-    int res = 0, len = s.size();
-    string buffer = "";
+int n, a[100], used[100];
 
-    for(int i = 0; i < len; ++i){
-        auto pos = buffer.find(s[i]);
+void in(){
+    for(int i = 1; i <= n; ++i){
+        cout << a[i] << " ";
+    }
+    cout << endl;
+}
 
-        if(pos == string::npos) buffer += s[i];
-        else{
-            res = max(res, (int)buffer.size());
-            buffer = buffer.substr(pos + 1) + s[i];
+void ql(int i){
+    for(int j = 1; j <= n; j++){
+        if(!used[j]){
+            a[i] = j;
+            used[j] = 1;
+            if(i < n) ql(i + 1);
+            else in();
+            used[j] = 0;
         }
     }
-    return max(res,(int)buffer.size());
-}  
-
-
+}
 
 int main() {
     fast_io();
-    string s; cin >> s;
-    cout << lengthOfLongestSubstring(s);    
+    cin >> n;
+    ql(1);
     return 0;
 }
