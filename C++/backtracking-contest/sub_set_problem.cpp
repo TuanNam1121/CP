@@ -15,26 +15,35 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int n, k, a[100]; // mang a luu cau hinh
-// cau hinh dau : 1 2 ... k
-// cau hinh cuoi : n - k + 0, n - k + 1, n - k + 2, n - k + k (= n) 
-
-void in(){
-    for(int i = 1; i <= k; ++i) cout << a[i] << " ";
-    cout << endl;
+int n, a[30], x[30];
+int ok;
+void  xuly(){
+    int c1, c2; c1 = c2 = 0;
+    for(int i = 0; i <= n ; ++i){
+        if(x[i] == 1) c1 += a[i];
+        else c2 += a[i];
+    }
+    if(c1 == c2) ok = 1;
 }
 
 void ql(int i){
-    for(int j = a[i - 1] + 1; j <= n - k + i; ++j){
-        a[i] = j;
-        if(i < k) ql(i + 1);
-        else in();
+    if(ok) return;
+    for(int j = 0; j <= 1; ++j){
+        x[i] = j;
+        if(i == n){
+            xuly();
+        }
+        else ql(i + 1);
     }
 }
 
 int main() {
     fast_io();
-    cin >> n >> k;
+    cin >> n;
+    ok = 0;
+    for(int i = 1; i <= n; ++i) cin >> a[i];
     ql(1);
+    if(ok) cout << 1;
+    else cout << 0;
     return 0;
 }

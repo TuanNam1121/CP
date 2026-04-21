@@ -15,8 +15,28 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
+int m, n, a[15][15];
+int res;
+int dx[2] = {1, 0};
+int dy[2] = {0, 1};
+
+void ql(int i, int j){
+    if(i == m - 1 && j == n - 1) ++res;
+    for(int x = 0; x < 2; ++x){
+        int i1 = i + dx[x], j1 = j + dy[x];
+        if(i1 >= 0 && j1 >= 0 & i1 < m && j1 < n){
+            ql(i1, j1);
+        }
+    }
+}
+
+
 int main() {
     fast_io();
-    4
+    cin >> m >> n;
+    rep2(i, j, 0, m, 0, n) cin >> a[i][j];
+    res = 0;
+    ql(0, 0);
+    cout << res;
     return 0;
 }

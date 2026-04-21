@@ -15,24 +15,31 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int n, k, a[100]; // mang a luu cau hinh
+int n, a[21], x[21];
+vector<string> s;
 
-void in(){
-    for(int i = 1; i <= n; ++i) cout << a[i] << " ";
-    cout << endl;
+void in(int cnt){
+    string res = "";
+    for(int i = 1; i <= cnt; ++i) res += to_string(x[i]) + " ";
+    s.pb(res);
 }
 
-void ql(int i){
-    for(int j = 0; j <= 1; j++){
-        a[i] = j;
-        if(i < n) ql(i + 1);
-        else in();
+void ql(int i, int start){
+    for(int j = start; j <= n; ++j){
+        if(a[j] > x[i - 1]){
+            x[i] = a[j];
+            if(i >= 2) in(i);
+            ql(i + 1, j + 1);
+        }
     }
 }
 
 int main() {
     fast_io();
     cin >> n;
-    ql(1);
+    rep(i, 1, n + 1) cin >> a[i];
+    ql(1, 1);
+    sort(s.begin(), s.end());
+    for(string i : s) cout << i << endl;
     return 0;
 }

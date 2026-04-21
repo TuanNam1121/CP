@@ -15,30 +15,23 @@ void fast_io() {
     cout.tie(nullptr);
 }
 
-int n, a[100], used[100];
+int n, k, s, cnt;
 
-void in(){
-    for(int i = 1; i <= n; ++i){
-        cout << a[i] << " ";
-    }
-    cout << endl;
-}
-
-void ql(int i){
-    for(int j = 1; j <= n; j++){
-        if(!used[j]){
-            a[i] = j;
-            used[j] = 1;
-            if(i < n) ql(i + 1);
-            else in();
-            used[j] = 0;
+void ql(int i, int start, int sum){
+    for(int j = start; j <= n; ++j){
+        if(sum + j <= s){
+            if(sum + j == s && i == k) ++cnt;
+            else ql(i + 1, j + 1, sum + j);
         }
     }
 }
 
+
 int main() {
     fast_io();
-    cin >> n;
-    ql(1);
+    cin >> n >> k >> s;
+    cnt = 0;
+    ql(1, 1, 0);
+    cout << cnt;    
     return 0;
 }
