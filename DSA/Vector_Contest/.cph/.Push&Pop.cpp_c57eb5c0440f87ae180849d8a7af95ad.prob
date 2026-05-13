@@ -1,0 +1,1 @@
+{"name":"Local: Push&Pop","url":"c:\\Users\\Admin\\OneDrive\\Desktop\\CP\\DSA\\Vector_Contest\\Push&Pop.cpp","tests":[{"id":1778462228430,"input":"7\n1 58\n2\n2\n1 52\n1 81\n1 12\n1 2","output":"52 81 12 2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Admin\\OneDrive\\Desktop\\CP\\DSA\\Vector_Contest\\Push&Pop.cpp","group":"local","local":true}
