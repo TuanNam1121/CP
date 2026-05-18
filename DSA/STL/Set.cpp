@@ -11,6 +11,7 @@ using namespace std;
 - insert : O(logn)
 - find : O(logn)
 - count : O(logn)
+- erase : O(logn) xóa theo giá trị hoặc iterator
 */
 
 int main() {
@@ -47,6 +48,11 @@ int main() {
     
     if(cnt == 0) cout << "NOT FOUND" << endl;
     else cout << "FOUND" << endl;
-
+    
+    // 1 2 3 5 7
+    // khi xóa giá trị cần đảm bảo giá trị cần xóa
+    for(set<int>::iterator it = se.begin(); it != se.end(); ++it){
+        if(*it % 2 == 0) se.erase(it);
+    }
     return 0;
 }
